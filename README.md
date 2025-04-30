@@ -101,11 +101,11 @@ npm run dev
 React app will run at: http://localhost:3000
 ```
 
-2. Machine Learning Pipeline:
+## Machine Learning Pipeline:
    
 The backend includes a placeholder for integrating a trained ML model that processes DICOM or NIfTI input files into a 3D volume. This output is then served to the frontend for visualization via VTK.js.
 
-3. Database and Storage Strategy:
+## Database and Storage Strategy:
    
 **Relational Database**: SQLAlchemy handles user data and metadata of uploaded scans.
 
