@@ -1,48 +1,31 @@
-import { useState } from "react"
+import React, { useState } from 'react';
 
-function LoginForm() {
+const LoginForm = () => {
+  const [credentials, setCredentials] = useState({ username: '', password: '' });
 
-    const [username, setUsername] = useState("")
-    const [password, setPassword] = useState("")
-    const [error, setError] = useState(null)
-    const [loading, setLoading] = useState(true)
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setCredentials((prev) => ({ ...prev, [name]: value }));
+  };
 
-    const handleSubmit = (e, q) => {
-        e.preventDefault()
-        alert(username)
-        setPassword(q.target.value)
-        setUsername(e.target.value)
-        setLoading(false)
-        
-    }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Handle login logic here
+  };
 
-    return (
-        <div className="login-page">
-            <h1>Login</h1>
-            <form onSubmit="handleSubmit" className="login-form">
-                <div className="form-group">
-                    <label htmlFor="username">Username</label>
-                    <input type="text"
-                    id="username"
-                    placeholder="Enter your username"
-                    value={username}
-                    required
-                    onChange={(e) => setUsername(e.target.value)}/>
-                </div>
-                <div className="form-group">
-                    <label htmlFor="password">Password</label>
-                    <input type="text"
-                    id="password"
-                    placeholder="Enter your password"
-                    value={password}
-                    required
-                    onChange={(e) => setPassword(e.target.value)}/>
-                </div>
-            <button type="submit" className="login-button">Login</button>
-            </form>
-            {error && <div className="error-message">{error}</div>}
-        </div>
-    )
-}
+  return (
+    <form onSubmit={handleSubmit}>
+      <label>
+        Username:
+        <input type="text" name="username" value={credentials.username} onChange={handleChange} />
+      </label>
+      <label>
+        Password:
+        <input type="password" name="password" value={credentials.password} onChange={handleChange} />
+      </label>
+      <button type="submit">Login</button>
+    </form>
+  );
+};
 
-export default LoginForm
+export default LoginForm;

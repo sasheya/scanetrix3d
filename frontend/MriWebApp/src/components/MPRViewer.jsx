@@ -1,9 +1,15 @@
-function MPRViewer() {
-    return (
-        <div>
+import React from 'react';
 
-        </div>
-    )
-}
+const MPRViewer = ({ slices }) => {
+  return (
+    <div>
+      <h3>MPR Viewer</h3>
+      {/* Implement MPR slice rendering logic here */}
+      {slices.map((slice, index) => (
+        <img key={index} src={slice} alt={`Slice ${index}`} />
+      ))}
+    </div>
+  );
+};
 
-export default MPRViewer
+export default MPRViewer;

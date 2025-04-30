@@ -1,18 +1,28 @@
-import { useState } from 'react'
-import './App.css'
-import LoginForm from './components/loginForm'
-import NavBar from './components/navBar'
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import './App.css';
+import Navbar from './components/navBar';
+import Home from './pages/home';
+import About from './pages/about';
+import Login from './pages/login';
+import SignUp from './pages/signUp';
+import Viewer from './pages/viewer';
+import Dashboard from './components/dashboard';
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-    <NavBar />
-    <LoginForm />
-    <div>hellow world</div>
-    </>
-  )
+    <Router>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/viewer" element={<Viewer />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+      </Routes>
+    </Router>
+  );
 }
 
-export default App
+export default App;
