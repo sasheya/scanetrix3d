@@ -98,11 +98,11 @@ const Viewer = () => {
   };
 
   return (
-    <div>
+    <div className="viewer-container">
       <h1>3D Scan Viewer</h1>
-      <div>
+      <div className="uploads-section">
         <h2>Your Uploads</h2>
-        <ul>
+        <ul className="uploads-list">
           {uploads.map((upload) => (
             <li key={upload.id}>
               {upload.filename} - {new Date(upload.date_uploaded).toLocaleDateString()}
@@ -111,7 +111,7 @@ const Viewer = () => {
                 <>
                   <button onClick={triggerProcessing} disabled={processingStatus[upload.id] === 'Processing...'}>Process</button>
                   <button onClick={fetchProcessedResults} disabled={processingStatus[upload.id] === 'Fetching results...'}>View Results</button>
-                  <span>{processingStatus[upload.id]}</span>
+                  <span className="status-text">{processingStatus[upload.id]}</span>
                 </>
               )}
             </li>

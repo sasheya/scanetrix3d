@@ -1,7 +1,7 @@
 from flask import Blueprint, request, jsonify, send_from_directory
 from flask_jwt_extended import jwt_required
-from ..extensions import db
-from ..model import Upload
+from extensions import db
+from model import Upload
 import os
 
 process_bp = Blueprint('process', __name__, url_prefix='/process')

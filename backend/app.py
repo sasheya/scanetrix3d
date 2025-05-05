@@ -1,4 +1,3 @@
-
 from flask_cors import CORS
 from flask_jwt_extended import JWTManager
 from extensions import db, init_app
