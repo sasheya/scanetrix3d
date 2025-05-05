@@ -7,11 +7,35 @@ const UploadForm = () => {
     setFile(e.target.files[0]);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle the file upload logic here
+    if (!file) {
+      alert('Please select a file to upload.');
+      return;
+    }
+    await uploadScan();
   };
 
+  const uploadScan = async () => {
+    const formData = new FormData();
+    formData.append('file', file);
+  
+    const response = await fetch('/upload/', {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`, // JWT token from login
+      },
+      body: formData,
+    });
+  
+    if (response.ok) {
+      const data = await response.json();
+      console.log('File uploaded:', data);
+    } else {
+      console.error('Upload failed');
+    }
+  };
+  
   return (
     <form onSubmit={handleSubmit}>
       <label>

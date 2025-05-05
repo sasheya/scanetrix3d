@@ -1,6 +1,6 @@
 from flask import Blueprint, request, jsonify
 from flask_jwt_extended import get_jwt_identity, jwt_required
-from app import db
+from extensions import db
 from model import Upload
 import os
 
@@ -25,7 +25,13 @@ def upload_file():
     file.save(file_path)
 
     new_upload = Upload(filename=filename, file_type=file.content_type, user_id=user_id)
-    db.session.add(new_upload)
-    db.session.commit()
+    new_upload.save()
 
-    return jsonify({'message': 'File uploaded successfully', 'file': filename}), 201
+    return jsonify({'message': 'File uploaded successfully', 'file': filename, 'upload_id': new_upload.id}), 201
+
+@upload_bp.route('/uploads', methods=['GET'])
+@jwt_required()
+def get_user_uploads():
+    user_id = get_jwt_identity()
+    uploads = Upload.query.filter_by(user_id=user_id).all()
+    return jsonify([{'id': upload.id, 'filename': upload.filename, 'date_uploaded': upload.date_uploaded} for upload in uploads]), 200

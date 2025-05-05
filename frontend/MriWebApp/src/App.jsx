@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import './App.css';
 import Navbar from './components/navBar';
 import Home from './pages/home';
@@ -11,7 +11,7 @@ import Dashboard from './components/dashboard';
 
 function App() {
   return (
-    <Router>
+    <>
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -21,7 +21,7 @@ function App() {
         <Route path="/viewer" element={<Viewer />} />
         <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
-    </Router>
+    </>
   );
 }
 
