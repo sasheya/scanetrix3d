@@ -1,0 +1,51 @@
+.login-background{
+    background-color: rgb(229, 199, 199);
+    background-image: url();
+    height: 100vh;
+}
+
+.login-background h1{
+    padding: 30px 0 0 50px;
+    color: white;
+    height: 7vh;
+    /* background-color: rosybrown; */
+    text-transform: uppercase;
+    font-size: 1.3rem;
+    font-weight: 800;
+}
+
+.login-container{
+    padding: 0 2vw;
+    color: white;
+    margin: 0 auto;
+    width: 61%;
+    height: 75%;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    gap: 3vh;
+    background-color: rgb(63, 61, 61);
+}
+
+.login-container h2 {
+    height: 30px;
+    padding: 10px;
+    font-size: 1.7rem;
+    font-weight: 700;
+}
+
+.login-container p{
+    font-size: 17px;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+.login-container .login-form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+}
