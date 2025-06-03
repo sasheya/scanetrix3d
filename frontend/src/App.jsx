@@ -10,17 +10,14 @@ import Viewer from './pages/viewer';
 import Dashboard from './components/dashboard';
 
 function App() {
-  showNavbar = true;
-
   return (
     
     <div className='main-container'>
-      {showNavbar && <Navbar />}
-      {/* <Navbar /> */}
+      <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
-        <Route path="/login" element={<Login showNavbar={false}/>} />
+        <Route path="/login" element={<Login/>} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/viewer" element={<Viewer />} />
         <Route path="/dashboard" element={<Dashboard />} />
