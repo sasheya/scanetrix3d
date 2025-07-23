@@ -1,0 +1,571 @@
+  /* Base Styles */
+  * {
+    box-sizing: border-box;
+  }
+  
+  /* Layout */
+  .upload-container {
+    background: linear-gradient(180deg, var(--color-background) 0%, var(--color-muted) 100%);
+  }
+  
+  .upload-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+  }
+  
+  .upload-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  @media (min-width: 1024px) {
+    .upload-grid {
+      grid-template-columns: 2fr 1fr;
+    }
+  }
+  
+  .upload-main {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .upload-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  /* Header */
+  .upload-header {
+    text-align: center;
+    animation: fadeInUp 0.3s ease-out;
+  }
+  
+  .upload-header-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+  }
+  
+  .icon-wrapper {
+    padding: 0.75rem;
+    border-radius: 50%;
+    background-color: rgba(37, 99, 235, 0.1);
+  }
+  
+  .upload-title {
+    font-size: 1.875rem;
+    font-weight: 700;
+    color: var(--color-foreground);
+    margin: 0 0 0.5rem 0;
+  }
+  
+  .upload-description {
+    color: var(--color-muted-foreground);
+    max-width: 28rem;
+    margin: 0 auto;
+  }
+  
+  /* Card Component */
+  .card {
+    background-color: var(--color-card);
+    border: 1px solid var(--color-border);
+    border-radius: 0.5rem;
+    box-shadow: var(--shadow-card);
+    overflow: hidden;
+  }
+  
+  .card-header {
+    padding: 1.5rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+  
+  .card-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--color-foreground);
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .card-content {
+    padding: 1.5rem;
+  }
+  
+  /* File Dropzone */
+  .dropzone {
+    position: relative;
+    border: 2px dashed var(--color-border);
+    border-radius: 0.5rem;
+    padding: 2rem;
+    text-align: center;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+  }
+  
+  .dropzone:hover {
+    border-color: rgba(37, 99, 235, 0.5);
+    background-color: rgba(248, 250, 252, 0.5);
+  }
+  
+  .dropzone.active {
+    border-color: var(--color-medical-blue);
+    background-color: rgba(37, 99, 235, 0.05);
+    transform: scale(1.02);
+  }
+  
+  .dropzone.disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+  
+  .dropzone-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .dropzone-icon {
+    padding: 1rem;
+    border-radius: 50%;
+    background-color: rgba(37, 99, 235, 0.1);
+  }
+  
+  .dropzone-icon.success {
+    background-color: rgba(5, 150, 105, 0.1);
+  }
+  
+  .dropzone-text h3 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--color-foreground);
+    margin: 0 0 0.25rem 0;
+  }
+  
+  .dropzone-text p {
+    font-size: 0.875rem;
+    color: var(--color-muted-foreground);
+    margin: 0;
+  }
+  
+  .dropzone-link {
+    color: var(--color-medical-blue);
+    font-weight: 500;
+  }
+  
+  .dropzone-info {
+    font-size: 0.75rem;
+    color: var(--color-muted-foreground);
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  
+  .dropzone-overlay {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(2px);
+    border-radius: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .dropzone-upload {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  
+  .dropzone-upload-icon {
+    animation: pulseGlow 2s ease-in-out infinite;
+    margin: 0 auto;
+  }
+  
+  .progress-bar {
+    width: 8rem;
+    height: 0.5rem;
+    background-color: var(--color-muted);
+    border-radius: 0.25rem;
+    overflow: hidden;
+  }
+  
+  .progress-fill {
+    height: 100%;
+    background-color: var(--color-medical-blue);
+    transition: width 0.3s ease;
+  }
+  
+  /* Form Styles */
+  .form-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  @media (min-width: 768px) {
+    .form-grid.two-cols {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  
+  .form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .form-label {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-foreground);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .form-input,
+  .form-select,
+  .form-textarea {
+    padding: 0.5rem 0.75rem;
+    border: 1px solid var(--color-input);
+    border-radius: 0.375rem;
+    font-size: 0.875rem;
+    color: var(--color-foreground);
+    background-color: var(--color-background);
+    transition: var(--transition-fast);
+  }
+  
+  .form-input:focus,
+  .form-select:focus,
+  .form-textarea:focus {
+    outline: none;
+    border-color: var(--color-ring);
+    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.1);
+  }
+  
+  .form-textarea {
+    min-height: 6rem;
+    resize: none;
+  }
+  
+  /* Button Styles */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 0.375rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    border: none;
+    transition: var(--transition-fast);
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  
+  .btn:disabled {
+    pointer-events: none;
+    opacity: 0.5;
+  }
+  
+  .btn-primary {
+    background-color: var(--color-primary);
+    color: var(--color-primary-foreground);
+  }
+  
+  .btn-primary:hover:not(:disabled) {
+    background-color: var(--color-medical-blue-dark);
+  }
+  
+  .btn-medical {
+    background-color: var(--color-medical-blue);
+    color: var(--color-primary-foreground);
+    box-shadow: var(--shadow-medical);
+    transition: var(--transition-smooth);
+  }
+  
+  .btn-medical:hover:not(:disabled) {
+    background-color: var(--color-medical-blue-dark);
+  }
+  
+  .btn-outline {
+    border: 1px solid var(--color-input);
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+  }
+  
+  .btn-outline:hover:not(:disabled) {
+    background-color: var(--color-muted);
+  }
+  
+  .btn-ghost {
+    background-color: transparent;
+    color: var(--color-foreground);
+  }
+  
+  .btn-ghost:hover:not(:disabled) {
+    background-color: var(--color-muted);
+  }
+  
+  .btn-sm {
+    padding: 0.375rem 0.75rem;
+    font-size: 0.75rem;
+  }
+  
+  .btn-lg {
+    padding: 0.75rem 2rem;
+    font-size: 1rem;
+    font-weight: 600;
+  }
+  
+  .btn-icon {
+    width: 2rem;
+    height: 2rem;
+    padding: 0;
+  }
+  
+  /* Badge Styles */
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    border-radius: 0.25rem;
+    border: 1px solid transparent;
+  }
+  
+  .badge-success {
+    background-color: rgba(5, 150, 105, 0.1);
+    color: var(--color-medical-success);
+    border-color: rgba(5, 150, 105, 0.2);
+  }
+  
+  .badge-warning {
+    background-color: rgba(217, 119, 6, 0.1);
+    color: var(--color-medical-warning);
+    border-color: rgba(217, 119, 6, 0.2);
+  }
+  
+  .badge-error {
+    background-color: rgba(220, 38, 38, 0.1);
+    color: var(--color-medical-error);
+    border-color: rgba(220, 38, 38, 0.2);
+  }
+  
+  /* Alert Styles */
+  .alert {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem;
+    border-radius: 0.375rem;
+    font-size: 0.875rem;
+  }
+  
+  .alert-success {
+    background-color: rgba(5, 150, 105, 0.1);
+    color: var(--color-medical-success);
+    border: 1px solid rgba(5, 150, 105, 0.2);
+  }
+  
+  .alert-error {
+    background-color: rgba(220, 38, 38, 0.1);
+    color: var(--color-medical-error);
+    border: 1px solid rgba(220, 38, 38, 0.2);
+  }
+  
+  .alert-icon {
+    flex-shrink: 0;
+  }
+  
+  /* Upload History */
+  .upload-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    border: 1px solid rgba(226, 232, 240, 0.5);
+    transition: var(--transition-smooth);
+  }
+  
+  .upload-item:hover {
+    border-color: rgba(37, 99, 235, 0.3);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  }
+  
+  .upload-item-content {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    min-width: 0;
+    flex: 1;
+  }
+  
+  .upload-item-details {
+    min-width: 0;
+    flex: 1;
+  }
+  
+  .upload-item-name {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-foreground);
+    margin: 0 0 0.25rem 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .upload-item-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+    color: var(--color-muted-foreground);
+  }
+  
+  .upload-item-date {
+    font-size: 0.75rem;
+    color: var(--color-muted-foreground);
+    margin: 0.25rem 0 0 0;
+  }
+  
+  .upload-item-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-shrink: 0;
+  }
+  
+  /* Tips Card */
+  .tips-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  
+  .tips-bullet {
+    width: 0.375rem;
+    height: 0.375rem;
+    border-radius: 50%;
+    background-color: var(--color-medical-blue);
+    margin-top: 0.5rem;
+    flex-shrink: 0;
+  }
+  
+  .tips-text {
+    font-size: 0.875rem;
+    color: var(--color-muted-foreground);
+    margin: 0;
+  }
+  
+  /* Submit Button Container */
+  .submit-container {
+    display: flex;
+    justify-content: center;
+    animation: fadeInUp 0.3s ease-out 0.2s both;
+  }
+  
+  /* Empty State */
+  .empty-state {
+    text-align: center;
+    padding: 1.5rem;
+    color: var(--color-muted-foreground);
+  }
+  
+  .empty-state-icon {
+    margin: 0 auto 0.5rem;
+    opacity: 0.5;
+  }
+  
+  .empty-state-text {
+    font-size: 0.875rem;
+    margin: 0;
+  }
+  
+  /* Animations */
+  @keyframes fadeInUp {
+    0% {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes pulseGlow {
+    0%, 100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.8;
+      transform: scale(1.05);
+    }
+  }
+  
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  .animate-fade-in-up {
+    animation: fadeInUp 0.3s ease-out;
+  }
+  
+  .animate-pulse-glow {
+    animation: pulseGlow 2s ease-in-out infinite;
+  }
+  
+  .animate-spin {
+    animation: spin 1s linear infinite;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 767px) {
+    .upload-content {
+      padding: 1rem;
+    }
+    
+    .upload-header {
+      margin-bottom: 1.5rem;
+    }
+    
+    .upload-title {
+      font-size: 1.5rem;
+    }
+    
+    .card-header,
+    .card-content {
+      padding: 1rem;
+    }
+    
+    .dropzone {
+      padding: 1.5rem;
+    }
+  }
+  
+  /* Icon Colors */
+  .text-medical-blue { color: var(--color-medical-blue); }
+  .text-medical-success { color: var(--color-medical-success); }
+  .text-medical-warning { color: var(--color-medical-warning); }
+  .text-medical-error { color: var(--color-medical-error); }
+  .text-muted-foreground { color: var(--color-muted-foreground); }
+  .text-foreground { color: var(--color-foreground); }

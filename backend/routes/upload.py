@@ -1,7 +1,7 @@
 from flask import Blueprint, request, jsonify
 from flask_jwt_extended import get_jwt_identity, jwt_required
-from extensions import db
-from model import Upload
+from ..extensions import db
+from ..model import Upload
 import os
 
 upload_bp = Blueprint('upload', __name__)
@@ -35,3 +35,35 @@ def get_user_uploads():
     user_id = get_jwt_identity()
     uploads = Upload.query.filter_by(user_id=user_id).all()
     return jsonify([{'id': upload.id, 'filename': upload.filename, 'date_uploaded': upload.date_uploaded} for upload in uploads]), 200
+
+@upload_bp.route('/stats', methods=['GET'])
+@jwt_required()
+def get_upload_stats():
+    user_id = get_jwt_identity()
+    total_uploads = Upload.query.filter_by(user_id=user_id).count()
+    processing_status = db.session.query(
+        Upload.processed_status,
+        db.func.count(Upload.id)
+    ).filter_by(user_id=user_id).group_by(Upload.processed_status).all()
+    
+    return jsonify({
+        'total_uploads': total_uploads,
+        'status_breakdown': dict(processing_status)
+    })
+
+@upload_bp.route('/recent', methods=['GET'])
+@jwt_required()
+def get_recent_uploads():
+    user_id = get_jwt_identity()
+    recent_uploads = Upload.query.filter_by(user_id=user_id)\
+        .order_by(Upload.date_uploaded.desc())\
+        .limit(5)\
+        .all()
+    
+    return jsonify([{
+        'id': upload.id,
+        'filename': upload.filename,
+        'date_uploaded': upload.date_uploaded.isoformat(),
+        'status': upload.processed_status,
+        'thumbnail': upload.thumbnail_path
+    } for upload in recent_uploads])

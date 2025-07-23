@@ -1,17 +1,29 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import '../stylesheets/navBar.css';
+import React from "react";
+import { Link } from "react-router-dom";
+import "../stylesheets/navBar.css";
 
 const Navbar = () => {
   return (
-    <nav >
-      <h1>Scanetrix</h1>
-      <div className='navbar-links'>
-        <Link className="home-link" to="/">Home</Link>
-        <Link className="about-link" to="/about">About</Link>
-        <Link className="login-link" to="/login">Login</Link>
-        <Link className="signup-link" to="/signup">Sign Up</Link>
-        <Link className="dashboard-link" to="/dashboard">Dashboard</Link>
+    <nav>
+      <p>Scanetrix</p>
+      <div className="navbar-links">
+        <Link className="link-item" to="/">
+          Home
+        </Link>
+        <Link className="link-item" to="/about">
+          About
+        </Link>
+        <Link className="link-item" to="/dashboard">
+          Dashboard
+        </Link>
+      </div>
+      <div className="user-auth-links">
+        <Link className="link-item" id="login-link" to="/login">
+          Login
+        </Link>
+        <Link className="link-item" id="signup-link" to="/signup">
+          Sign Up
+        </Link>
       </div>
     </nav>
   );

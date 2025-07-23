@@ -1,0 +1,260 @@
+/* Component Styles */
+
+/* Quick Actions */
+.quick-actions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 0.75rem;
+  }
+  
+  .quick-action-btn {
+    height: auto;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+    transition: all 0.3s;
+    text-align: left;
+  }
+  
+  .quick-action-btn:hover {
+    box-shadow: 0 4px 6px -1px rgba(0, 143, 156, 0.1), 0 2px 4px -1px rgba(0, 143, 156, 0.06);
+  }
+  
+  .quick-action-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    width: 100%;
+  }
+  
+  .quick-action-title {
+    font-weight: 500;
+    font-size: 0.875rem;
+  }
+  
+  .quick-action-desc {
+    font-size: 0.75rem;
+    color: #6b7280;
+  }
+  
+  /* Recent Scans */
+  .recent-scans-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  
+  .scan-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.375rem;
+    transition: all 0.2s;
+  }
+  
+  .scan-item:hover {
+    background-color: #f9fafb;
+    border-color: #d1d5db;
+  }
+  
+  .scan-info {
+    flex: 1;
+  }
+  
+  .scan-name {
+    font-weight: 500;
+    font-size: 0.875rem;
+    color: #374151;
+    margin: 0 0 0.25rem 0;
+  }
+  
+  .scan-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .scan-type {
+    font-size: 0.75rem;
+    color: #6b7280;
+  }
+  
+  .scan-timestamp {
+    font-size: 0.75rem;
+    color: #9ca3af;
+  }
+  
+  .scan-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  /* Charts */
+  .charts-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  @media (min-width: 1024px) {
+    .charts-grid {
+      grid-template-columns: 2fr 1fr;
+    }
+  }
+  
+  .chart-container {
+    width: 100%;
+    height: 200px;
+  }
+  
+  .chart-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+  
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .legend-color {
+    width: 0.75rem;
+    height: 0.75rem;
+    border-radius: 50%;
+  }
+  
+  .legend-label {
+    font-size: 0.875rem;
+    color: #6b7280;
+  }
+  
+  /* Alerts */
+  .alerts-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .alert-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 0.75rem;
+    border-radius: 0.375rem;
+    border-left: 4px solid;
+  }
+  
+  .alert-error {
+    background-color: #fef2f2;
+    border-left-color: #ef4444;
+  }
+  
+  .alert-warning {
+    background-color: #fffbeb;
+    border-left-color: #f59e0b;
+  }
+  
+  .alert-info {
+    background-color: #eff6ff;
+    border-left-color: #3b82f6;
+  }
+  
+  .alert-icon {
+    margin-top: 0.125rem;
+  }
+  
+  .alert-icon svg {
+    width: 1rem;
+    height: 1rem;
+  }
+  
+  .alert-content {
+    flex: 1;
+  }
+  
+  .alert-title {
+    font-weight: 600;
+    font-size: 0.875rem;
+    margin: 0 0 0.25rem 0;
+  }
+  
+  .alert-message {
+    font-size: 0.875rem;
+    color: #6b7280;
+    margin: 0 0 0.25rem 0;
+  }
+  
+  .alert-timestamp {
+    font-size: 0.75rem;
+    color: #9ca3af;
+  }
+  
+  .alert-dismiss {
+    padding: 0.25rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #9ca3af;
+    border-radius: 0.25rem;
+  }
+  
+  .alert-dismiss:hover {
+    color: #6b7280;
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+  
+  .alert-dismiss svg {
+    width: 0.875rem;
+    height: 0.875rem;
+  }
+  
+  /* Dark mode for components */
+  .dark .quick-action-desc,
+  .dark .scan-type,
+  .dark .scan-timestamp,
+  .dark .legend-label,
+  .dark .alert-message {
+    color: #94a3b8;
+  }
+  
+  .dark .scan-item {
+    border-color: #334155;
+    background-color: transparent;
+  }
+  
+  .dark .scan-item:hover {
+    background-color: #334155;
+    border-color: #475569;
+  }
+  
+  .dark .scan-name {
+    color: #cbd5e1;
+  }
+  
+  .dark .alert-error {
+    background-color: rgba(239, 68, 68, 0.1);
+  }
+  
+  .dark .alert-warning {
+    background-color: rgba(245, 158, 11, 0.1);
+  }
+  
+  .dark .alert-info {
+    background-color: rgba(59, 130, 246, 0.1);
+  }
+  
+  .dark .alert-title {
+    color: #f1f5f9;
+  }
+  
+  .dark .alert-timestamp {
+    color: #64748b;
+  }

@@ -39,14 +39,30 @@ const LoginForm = () => {
 
   return (
     <form className="login-form" onSubmit={handleSubmit}>
-      <label className="login-label">
-        Username:
-        <input type="text" name="username" value={credentials.username} onChange={handleChange} />
+      <label className="login-label" for="username">
+        Username
       </label>
-      <label className="login-label">
-        Password:
-        <input type="password" name="password" value={credentials.password} onChange={handleChange} />
+      <input
+        className="login-input"
+        type="text"
+        placeholder="Enter username"
+        name="username"
+        value={credentials.username}
+        onChange={handleChange}
+      />
+     
+      <label className="login-label" for="password">
+        Password
       </label>
+      <input
+        className="login-input"
+        type="password"
+        placeholder="Enter password"
+        name="password"
+        value={credentials.password}
+        onChange={handleChange}
+      />
+      
       <button type="submit">Login</button>
     </form>
   );

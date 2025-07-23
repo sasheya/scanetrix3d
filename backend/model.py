@@ -1,4 +1,4 @@
-from extensions import db
+from .extensions import db
 from datetime import datetime, timezone
 
 """
@@ -39,6 +39,10 @@ class Upload(db.Model):
     file_type = db.Column(db.String(50), nullable=False)  # DICOM, NIfTI, JPG, etc.
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     date_uploaded = db.Column(db.DateTime, default=datetime.now(timezone.utc))
+    processed_status = db.Column(db.String(20), default='pending')  # pending, processing, completed, failed
+    processing_result = db.Column(db.Text, nullable=True)  # Store processing results or error messages
+    thumbnail_path = db.Column(db.String(255), nullable=True)  # Path to generated thumbnail
+    scan_metadata = db.Column(db.JSON, nullable=True)  # Store scan metadata (dimensions, spacing, etc.)
 
     user = db.relationship('User', backref=db.backref('uploads', lazy=True))
 

@@ -1,54 +1,27 @@
-import React, { useState } from 'react';
+import React from "react";
+import "../stylesheets/signUp.css";
+import SignUpForm from "../components/signUpForm";
 
 const SignUp = () => {
-const [userDetails, setUserDetails] = useState({ username: '', password: '', email: '' });
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setUserDetails((prev) => ({ ...prev, [name]: value }));
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const response = await fetch('/auth/signup', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(userDetails),
-      });
-
-      const data = await response.json();
-
-      if (response.ok) {
-        alert(data.message);
-        // Optionally redirect to login page
-      } else {
-        alert(data.message);
-      }
-    } catch (error) {
-      console.error('Error:', error);
-      alert('An error occurred during signup.');
-    }
-  };
-
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        Username:
-        <input type="text" name="username" value={userDetails.username} onChange={handleChange} />
-      </label>
-      <label>
-        Email:
-        <input type="email" name="email" value={userDetails.email} onChange={handleChange} />
-      </label>
-      <label>
-        Password:
-        <input type="password" name="password" value={userDetails.password} onChange={handleChange} />
-      </label>
-      <button type="submit">Sign Up</button>
-    </form>
+    <div className="signup">
+      <h1>
+        <h1>
+          <a href="Home">Scanetrix</a>
+        </h1>
+      </h1>
+      <div className="signup-container">
+        <h2>Create your account.</h2>
+        {/* <p>Please enter your credentials to login.</p> */}
+        <SignUpForm />
+        <div className="login-link">
+          <p>
+            Already have an account?
+            <a href="login">Login here</a>
+          </p>
+        </div>
+      </div>
+    </div>
   );
 };
 
